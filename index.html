@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Denuncia Segura</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #4f46e5, #9333ea);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app {
+      background: #ffffff;
+      width: 340px;
+      padding: 25px;
+      border-radius: 22px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      text-align: center;
+      color: #4f46e5;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 18px;
+    }
+
+    label {
+      font-size: 13px;
+      color: #333;
+      margin-top: 12px;
+      display: block;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 11px;
+      margin-top: 6px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #4f46e5;
+    }
+
+    #nombreContainer {
+      display: none;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 13px;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 15px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover {
+      opacity: 0.95;
+    }
+
+    #msg {
+      text-align: center;
+      margin-top: 15px;
+      color: green;
+      font-size: 14px;
+    }
+
+    .legal {
+      font-size: 11px;
+      color: #777;
+      margin-top: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+    <h1>Denuncia Segura</h1>
+    <p class="subtitle">Canal confidencial para reportar bullying o ciberbullying</p>
+
+    <form id="reportForm">
+
+      <label>Tipo de denuncia</label>
+      <select required>
+        <option value="">Selecciona</option>
+        <option>Bullying</option>
+        <option>Ciberbullying</option>
+      </select>
+
+      <label>¿Dónde ocurrió?</label>
+      <input type="text" placeholder="Salón, redes sociales, WhatsApp..." required>
+
+      <label>Describe lo sucedido</label>
+      <textarea rows="4" placeholder="Cuenta qué pasó..." required></textarea>
+
+      <label>¿Deseas que sea anónimo?</label>
+      <select id="anonimo">
+        <option value="si">Sí</option>
+        <option value="no">No</option>
+      </select>
+
+      <!-- CAMPO CONDICIONAL -->
+      <div id="nombreContainer">
+        <label>Nombre del denunciante (opcional)</label>
+        <input type="text" placeholder="Escribe tu nombre si lo deseas">
+      </div>
+
+      <button type="submit">Enviar denuncia</button>
+    </form>
+
+    <p id="msg"></p>
+
+    <p class="legal">
+      La información es confidencial y será atendida únicamente por orientación escolar.
+    </p>
+  </div>
+
+  <script>
+    const anonimoSelect = document.getElementById("anonimo");
+    const nombreContainer = document.getElementById("nombreContainer");
+
+    anonimoSelect.addEventListener("change", function () {
+      if (this.value === "no") {
+        nombreContainer.style.display = "block";
+      } else {
+        nombreContainer.style.display = "none";
+      }
+    });
+
+    document.getElementById("reportForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      document.getElementById("msg").innerText =
+        "✅ Tu denuncia fue enviada correctamente.";
+
+      this.reset();
+      nombreContainer.style.display = "none";
+    });
+  </script>
+
+</body>
+</html>
