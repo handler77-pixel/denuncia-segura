@@ -1,170 +1,150 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Denuncia Segura</title>
+<meta charset="UTF-8">
+<title>App Antibullying Escolar</title>
 
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #4f46e5, #9333ea);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    .app {
-      background: #ffffff;
-      width: 340px;
-      padding: 25px;
-      border-radius: 22px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-      animation: fadeIn 0.6s ease;
-    }
+.app {
+    background: white;
+    width: 95%;
+    max-width: 420px;
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+h1 {
+    text-align: center;
+    color: #2575fc;
+    margin-bottom: 5px;
+}
 
-    h1 {
-      text-align: center;
-      color: #4f46e5;
-      margin-bottom: 5px;
-    }
+.sub {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
 
-    .subtitle {
-      text-align: center;
-      font-size: 13px;
-      color: #666;
-      margin-bottom: 18px;
-    }
+label {
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 12px;
+    display: block;
+}
 
-    label {
-      font-size: 13px;
-      color: #333;
-      margin-top: 12px;
-      display: block;
-      font-weight: 600;
-    }
+select, input, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    font-size: 14px;
+}
 
-    input, select, textarea {
-      width: 100%;
-      padding: 11px;
-      margin-top: 6px;
-      border-radius: 12px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-      outline: none;
-    }
+textarea {
+    resize: none;
+}
 
-    input:focus, select:focus, textarea:focus {
-      border-color: #4f46e5;
-    }
+.hidden {
+    display: none;
+}
 
-    #nombreContainer {
-      display: none;
-    }
+.legal {
+    font-size: 11px;
+    color: #555;
+    margin-top: 15px;
+}
 
-    button {
-      width: 100%;
-      margin-top: 22px;
-      padding: 13px;
-      background: linear-gradient(135deg, #4f46e5, #7c3aed);
-      color: white;
-      border: none;
-      border-radius: 14px;
-      font-size: 15px;
-      cursor: pointer;
-      font-weight: 600;
-    }
+.legal input {
+    margin-right: 5px;
+}
 
-    button:hover {
-      opacity: 0.95;
-    }
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 15px;
+    cursor: pointer;
+}
 
-    #msg {
-      text-align: center;
-      margin-top: 15px;
-      color: green;
-      font-size: 14px;
-    }
-
-    .legal {
-      font-size: 11px;
-      color: #777;
-      margin-top: 15px;
-      text-align: center;
-    }
-  </style>
+button:hover {
+    opacity: 0.9;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="app">
-    <h1>Denuncia Segura</h1>
-    <p class="subtitle">Canal confidencial para reportar bullying o ciberbullying</p>
+<div class="app">
+    <h1>App Antibullying</h1>
+    <div class="sub">Denuncia escolar segura y confidencial</div>
 
-    <form id="reportForm">
-
-      <label>Tipo de denuncia</label>
-      <select required>
+    <label>Tipo de denuncia</label>
+    <select id="tipo" onchange="toggleNombre()">
         <option value="">Selecciona</option>
+        <option value="directa">Denuncia directa (soy la víctima)</option>
+        <option value="tercero">Denuncia como tercero (anónima)</option>
+    </select>
+
+    <div id="nombreBox" class="hidden">
+        <label>Nombre del denunciante (opcional)</label>
+        <input type="text" placeholder="Puedes escribir tu nombre si lo deseas">
+    </div>
+
+    <label>¿A quién o quiénes se denuncia?</label>
+    <input type="text" placeholder="Nombre(s) del presunto agresor o grupo">
+
+    <label>Tipo de situación</label>
+    <select>
         <option>Bullying</option>
         <option>Ciberbullying</option>
-      </select>
+        <option>Ambos</option>
+    </select>
 
-      <label>¿Dónde ocurrió?</label>
-      <input type="text" placeholder="Salón, redes sociales, WhatsApp..." required>
+    <label>Describe lo ocurrido</label>
+    <textarea rows="4" placeholder="Describe brevemente la situación..."></textarea>
 
-      <label>Describe lo sucedido</label>
-      <textarea rows="4" placeholder="Cuenta qué pasó..." required></textarea>
+    <label>¿Dónde ocurrió?</label>
+    <input type="text" placeholder="Aula, redes sociales, patio, WhatsApp...">
 
-      <label>¿Deseas que sea anónimo?</label>
-      <select id="anonimo">
-        <option value="si">Sí</option>
-        <option value="no">No</option>
-      </select>
+    <div class="legal">
+        <label>
+            <input type="checkbox" required>
+            He leído y acepto el tratamiento confidencial de los datos y el inicio del proceso conforme a la Ley 1620 de 2013 y la Ruta de Atención Escolar.
+        </label>
+    </div>
 
-      <!-- CAMPO CONDICIONAL -->
-      <div id="nombreContainer">
-        <label>Nombre del denunciante (opcional)</label>
-        <input type="text" placeholder="Escribe tu nombre si lo deseas">
-      </div>
+    <button onclick="enviar()">Enviar denuncia</button>
+</div>
 
-      <button type="submit">Enviar denuncia</button>
-    </form>
+<script>
+function toggleNombre() {
+    const tipo = document.getElementById("tipo").value;
+    const nombreBox = document.getElementById("nombreBox");
+    nombreBox.classList.toggle("hidden", tipo !== "directa");
+}
 
-    <p id="msg"></p>
-
-    <p class="legal">
-      La información es confidencial y será atendida únicamente por orientación escolar.
-    </p>
-  </div>
-
-  <script>
-    const anonimoSelect = document.getElementById("anonimo");
-    const nombreContainer = document.getElementById("nombreContainer");
-
-    anonimoSelect.addEventListener("change", function () {
-      if (this.value === "no") {
-        nombreContainer.style.display = "block";
-      } else {
-        nombreContainer.style.display = "none";
-      }
-    });
-
-    document.getElementById("reportForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      document.getElementById("msg").innerText =
-        "✅ Tu denuncia fue enviada correctamente.";
-
-      this.reset();
-      nombreContainer.style.display = "none";
-    });
-  </script>
+function enviar() {
+    alert("La denuncia será enviada de forma segura a la orientadora escolar.");
+}
+</script>
 
 </body>
 </html>
+
