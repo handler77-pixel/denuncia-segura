@@ -37,29 +37,43 @@
     p {
       font-size: 15px;
       line-height: 1.5;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    .boton-denuncia {
+    .opciones {
+      text-align: left;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+
+    .opciones label {
+      display: block;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .boton-principal {
       display: inline-block;
       background: #ff5252;
       color: #fff;
-      padding: 15px 25px;
+      padding: 14px 25px;
       border-radius: 30px;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
+      border: none;
+      cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
-    .boton-denuncia:hover {
+    .boton-principal:hover {
       transform: scale(1.05);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 
     .footer {
-      margin-top: 25px;
+      margin-top: 22px;
       font-size: 12px;
       opacity: 0.85;
     }
@@ -76,24 +90,47 @@
     <h1>App Antibullying Escolar</h1>
 
     <p>
-      Este espacio seguro permite reportar situaciones de bullying o ciberbullying
-      de forma confidencial. Tu reporte será atendido por orientación escolar,
-      siguiendo la Ruta de Atención según la Ley 1620.
+      Este espacio permite reportar situaciones de bullying o ciberbullying
+      de forma confidencial y segura.
     </p>
 
-    <a
-      href="https://docs.google.com/forms/d/e/1FAIpQLSfuo-FiCH2u3QKMAQpSALiTtEE01LQszpJvcyXFm1vl9TxVaA/viewform?usp=header"
-      target="_blank"
-      class="boton-denuncia"
-    >
-      Denunciar
-    </a>
+    <div class="opciones">
+      <strong>Tipo de denuncia:</strong>
+
+      <label>
+        <input type="radio" name="tipo" checked />
+        Denuncia directa (soy la persona afectada)
+      </label>
+
+      <label>
+        <input type="radio" name="tipo" />
+        Denuncia como tercero (anónima)
+      </label>
+    </div>
+
+    <p>
+      Al continuar, serás redirigido al formulario institucional administrado
+      por orientación escolar, conforme a la Ruta de Atención – Ley 1620.
+    </p>
+
+    <button class="boton-principal" onclick="irAlFormulario()">
+      Continuar con la denuncia
+    </button>
 
     <div class="footer">
       <strong>Confidencialidad garantizada</strong>
-      Desarrollado como material didáctico digital – Maestría en Educación
+      Material didáctico digital – Maestría en Educación
     </div>
   </div>
+
+  <script>
+    function irAlFormulario() {
+      window.open(
+        "PEGA_AQUI_EL_LINK_DEL_GOOGLE_FORM",
+        "_blank"
+      );
+    }
+  </script>
 </body>
 </html>
 
