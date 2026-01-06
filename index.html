@@ -1,150 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>App Antibullying Escolar</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App Antibullying Escolar</title>
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
 
-.app {
-    background: white;
-    width: 95%;
-    max-width: 420px;
-    border-radius: 25px;
-    padding: 25px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-}
+    .app-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
 
-h1 {
-    text-align: center;
-    color: #2575fc;
-    margin-bottom: 5px;
-}
+    h1 {
+      margin-bottom: 10px;
+      font-size: 26px;
+    }
 
-.sub {
-    text-align: center;
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 20px;
-}
+    p {
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
 
-label {
-    font-weight: 600;
-    font-size: 14px;
-    margin-top: 12px;
-    display: block;
-}
+    .boton-denuncia {
+      display: inline-block;
+      background: #ff5252;
+      color: #fff;
+      padding: 15px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
 
-select, input, textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    margin-top: 5px;
-    font-size: 14px;
-}
+    .boton-denuncia:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
 
-textarea {
-    resize: none;
-}
+    .footer {
+      margin-top: 25px;
+      font-size: 12px;
+      opacity: 0.85;
+    }
 
-.hidden {
-    display: none;
-}
-
-.legal {
-    font-size: 11px;
-    color: #555;
-    margin-top: 15px;
-}
-
-.legal input {
-    margin-right: 5px;
-}
-
-button {
-    margin-top: 20px;
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(90deg, #ff512f, #dd2476);
-    border: none;
-    color: white;
-    font-size: 16px;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-button:hover {
-    opacity: 0.9;
-}
-</style>
+    .footer strong {
+      display: block;
+      margin-top: 8px;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="app-container">
+    <h1>App Antibullying Escolar</h1>
 
-<div class="app">
-    <h1>App Antibullying</h1>
-    <div class="sub">Denuncia escolar segura y confidencial</div>
-
-    <label>Tipo de denuncia</label>
-    <select id="tipo" onchange="toggleNombre()">
-        <option value="">Selecciona</option>
-        <option value="directa">Denuncia directa (soy la víctima)</option>
-        <option value="tercero">Denuncia como tercero (anónima)</option>
-    </select>
-
-    <div id="nombreBox" class="hidden">
-        <label>Nombre del denunciante (opcional)</label>
-        <input type="text" placeholder="Puedes escribir tu nombre si lo deseas">
-    </div>
-
-    <label>¿A quién o quiénes se denuncia?</label>
-    <input type="text" placeholder="Nombre(s) del presunto agresor o grupo">
-
-    <label>Tipo de situación</label>
-    <select>
-        <option>Bullying</option>
-        <option>Ciberbullying</option>
-        <option>Ambos</option>
-    </select>
-
-    <label>Describe lo ocurrido</label>
-    <textarea rows="4" placeholder="Describe brevemente la situación..."></textarea>
-
-    <label>¿Dónde ocurrió?</label>
-    <input type="text" placeholder="Aula, redes sociales, patio, WhatsApp...">
-
-    <div class="legal">
-        <label>
-            <input type="checkbox" required>
-            He leído y acepto el tratamiento confidencial de los datos y el inicio del proceso conforme a la Ley 1620 de 2013 y la Ruta de Atención Escolar.
-        </label>
-    </div>
-
-    <button onclick="enviar()">Enviar denuncia</button>
-</div>
-
-<script>
-function toggleNombre() {
-    const tipo = document.getElementById("tipo").value;
-    const nombreBox = document.getElementById("nombreBox");
-    nombreBox.classList.toggle("hidden", tipo !== "directa");
-}
-
-function enviar() {
-    alert("La denuncia será enviada de forma segura a la orientadora escolar.");
-}
-</script>
-
-</body>
-</html>
-
+    <p>
+      E
